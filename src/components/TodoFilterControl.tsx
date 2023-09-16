@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FilterStatus, IState } from "../store/Interfaces";
 import { setFilterStatus } from "../store/actions";
 
-const TodoFilterControl = () => {
+const TodoFilterControl: React.FC = () => {
   const filterStatus = useSelector((state: IState) => state.filterStatus);
   const dispatch = useDispatch();
   const handleClick = (status: FilterStatus) => {

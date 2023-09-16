@@ -19,3 +19,7 @@ export const setFilterStatus = (status: FilterStatus) => ({
   type: ActionTypes.SET_FILTER_STATUS,
   payload: { status },
 });
+
+export const switchTheme = () => ({
+  type: ActionTypes.SWITCH_THEME,
+});

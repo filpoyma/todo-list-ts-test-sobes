@@ -10,7 +10,7 @@ const todos = [
 
 export const initialState: IState = {
   todos: todos,
-  theme: "light",
+  isThemeLight: true,
   filterStatus: FilterStatus.all,
 };
 
@@ -41,6 +41,12 @@ export const reducer = (
       return {
         ...state,
         filterStatus: action.payload.status,
+      };
+
+    case ActionTypes.SWITCH_THEME:
+      return {
+        ...state,
+        isThemeLight: !state.isThemeLight,
       };
 
     default:

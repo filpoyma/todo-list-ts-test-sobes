@@ -12,10 +12,7 @@ export enum FilterStatus {
 
 export interface IState {
   todos: ITodo[];
-  theme: "light" | "dark";
+  isThemeLight: boolean;
   filterStatus: FilterStatus;
 }
 
-export interface IStore {
-  store: IState;
-}

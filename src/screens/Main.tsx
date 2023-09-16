@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
 import Header from "../components/Header";
 import TodoForm from "../components/TodoForm";
@@ -9,9 +9,9 @@ import { FilterStatus, IState } from "../store/Interfaces";
 const Main: React.FC = () => {
   const todos = useSelector((state: IState) => state.todos);
   const filterStatus = useSelector((state: IState) => state.filterStatus);
-  const [themeLight, setThemeLight] = useState(true);
-
-  const themeClass = themeLight ? "light" : "dark";
+  const themeClass = useSelector((state: IState) =>
+    state.isThemeLight ? "light" : "dark"
+  );
 
   const filteredTodos = React.useMemo(() => {
     switch (filterStatus) {
@@ -27,7 +27,7 @@ const Main: React.FC = () => {
   return (
     <div className={`wrapper ${themeClass}`}>
       <div className="container">
-        <Header themeLight={themeLight} setThemeLight={setThemeLight} />
+        <Header />
         <main>
           <TodoForm />
           <TodoList todos={filteredTodos} />

@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { addTodo } from "../store/actions";
 
 const TodoForm: React.FC = () => {
-  console.log("TodoForm");
   const [todoInput, setTodoInput] = useState("");
   const dispatch = useDispatch();
 

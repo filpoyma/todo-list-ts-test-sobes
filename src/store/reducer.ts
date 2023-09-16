@@ -20,7 +20,7 @@ export const reducer = (
 ): IState => {
   switch (action.type) {
     case ActionTypes.ADD_TODO:
-      return { ...state, todos: [...todos, action.payload.todo] };
+      return { ...state, todos: [...state.todos, action.payload.todo] };
 
     case ActionTypes.DONE_TODO:
       const newTodos = state.todos.map((todo) => {
@@ -33,7 +33,7 @@ export const reducer = (
     case ActionTypes.CLEAR_COMPLITED_TODO:
       return {
         ...state,
-        todos: todos.filter((todo) => !todo.completed),
+        todos: state.todos.filter((todo) => !todo.completed),
         filterStatus: FilterStatus.all,
       };
 

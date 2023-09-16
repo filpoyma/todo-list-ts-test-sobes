@@ -77,13 +77,14 @@ describe("Redux store created from the reducer", () => {
         fireEvent.click(screen.getByTestId("all-button"));
       });
 
-      test("THEN second todos are visible", () => {
+      test("THEN first and second todos are visible", () => {
+        expect(screen.getByText("My first test todo")).toBeInTheDocument();
         expect(screen.getByText("My second test todo")).toBeInTheDocument();
       });
 
       describe("AND when the second todo is mark as completed", () => {
         beforeEach(() => {
-          fireEvent.click(screen.getAllByTestId("checkbox")[3]);
+          fireEvent.click(screen.getAllByTestId("checkbox")[4]);
         });
 
         test("THEN second todos are still visible", () => {
@@ -97,6 +98,9 @@ describe("Redux store created from the reducer", () => {
 
           test("THEN only the second todo is visible", () => {
             expect(screen.getByText("My second test todo")).toBeInTheDocument();
+            expect(
+              screen.queryByText("My first test todo")
+            ).not.toBeInTheDocument();
           });
 
           describe("AND when Clear completed button pressed", () => {
@@ -105,6 +109,9 @@ describe("Redux store created from the reducer", () => {
             });
 
             test("THEN only active todo is visible", () => {
+              expect(
+                screen.getByText("My first test todo")
+              ).toBeInTheDocument();
               expect(
                 screen.queryByText("My second test todo")
               ).not.toBeInTheDocument();

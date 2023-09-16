@@ -2,6 +2,9 @@
   "name": "todo-list-ts",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,7 +31,9 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+    }
   },
   "browserslist": {
     "production": [
